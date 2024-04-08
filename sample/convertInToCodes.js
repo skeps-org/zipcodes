@@ -32,21 +32,29 @@ const zipcodeList = require('./zipCode-08042024.json')
 
 function convert(){
     const codes = {};
+    const stateMap = {};
     zipcodeList.forEach((z)=>{
         codes[z.zipcode] = {};
+        stateMap[z.state_code] = stateMap[z.state_code] ?? []; 
         codes[z.zipcode] = {
             "zip": z.zipcode,
-            "decommissioned": 0,
             "city": z.city,
             "state_code": z.state_code,
             "state": z.state_code,
             "country": z.country,
         }
+        stateMap[z.state_code].push(z.zipcode)
     });
+
+
 
     console.log(Reflect.ownKeys(codes).length)
     if(codes){
         fs.writeFile(`${__dirname}/input.json`, JSON.stringify(codes), function (err) {
+            if (err) throw err;
+            console.log('complete');
+        });
+        fs.writeFile(`${__dirname}/stateMap.json`, JSON.stringify(stateMap), function (err) {
             if (err) throw err;
             console.log('complete');
         });
