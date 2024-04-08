@@ -1,8 +1,8 @@
 {
   "name": "zipcodes",
   "description": "Useful zipcode database with helper methods",
-  "version": "8.0.0",
-  "author": "Dav Glass <davglass@gmail.com>",
+  "version": "8.0.1",
+  "author": "sheel <sheepriy@skeps.com>",
   "bugs": {
     "web": "http://github.com/davglass/zipcodes/issues"
   },
